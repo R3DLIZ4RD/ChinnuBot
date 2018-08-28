@@ -97,7 +97,7 @@ if is_module_loaded(FILENAME):
                 update.effective_message.reply_text("`{}` ന്റെ ഉപയോഗം enable ചെയ്തിട്ടുണ്ട്!".format(enable_cmd),
                                                     parse_mode=ParseMode.MARKDOWN)
             else:
-                update.effective_message.reply_text("അത് നിലവിൽ disabled അല്ലേ?")
+                update.effective_message.reply_text("അത് disabled അല്ലല്ലോ?")
 
         else:
             update.effective_message.reply_text("എന്താണ് enable ചെയ്യേണ്ടത് എന്നു പറഞ്ഞില്ലല്ലോ?")
