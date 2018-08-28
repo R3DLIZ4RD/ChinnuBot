@@ -75,7 +75,7 @@ if is_module_loaded(FILENAME):
 
             if disable_cmd in set(DISABLE_CMDS + DISABLE_OTHER):
                 sql.disable_command(chat.id, disable_cmd)
-                update.effective_message.reply_text("`{}`ന്റെ ഉപയോഗം disable ചെയ്തിട്ടുണ്ട്!".format(disable_cmd),
+                update.effective_message.reply_text("`{}` ന്റെ ഉപയോഗം disable ചെയ്തിട്ടുണ്ട്!".format(disable_cmd),
                                                     parse_mode=ParseMode.MARKDOWN)
             else:
                 update.effective_message.reply_text("ഈ കമാൻഡ് disable ചെയ്യാൻ കഴിയില്ല!")
