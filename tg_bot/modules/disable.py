@@ -75,13 +75,13 @@ if is_module_loaded(FILENAME):
 
             if disable_cmd in set(DISABLE_CMDS + DISABLE_OTHER):
                 sql.disable_command(chat.id, disable_cmd)
-                update.effective_message.reply_text("Disabled the use of `{}`".format(disable_cmd),
+                update.effective_message.reply_text("`{}`ന്റെ ഉപയോഗം disable ചെയ്തിട്ടുണ്ട്!".format(disable_cmd),
                                                     parse_mode=ParseMode.MARKDOWN)
             else:
-                update.effective_message.reply_text("That command can't be disabled")
+                update.effective_message.reply_text("ഈ കമാൻഡ് disable ചെയ്യാൻ കഴിയില്ല!")
 
         else:
-            update.effective_message.reply_text("What should I disable?")
+            update.effective_message.reply_text("എന്താണ് disable ചെയ്യേണ്ടത് എന്നു പറഞ്ഞില്ലല്ലോ?")
 
 
     @run_async
@@ -94,13 +94,13 @@ if is_module_loaded(FILENAME):
                 enable_cmd = enable_cmd[1:]
 
             if sql.enable_command(chat.id, enable_cmd):
-                update.effective_message.reply_text("Enabled the use of `{}`".format(enable_cmd),
+                update.effective_message.reply_text("`{}` ന്റെ ഉപയോഗം enable ചെയ്തിട്ടുണ്ട്!".format(enable_cmd),
                                                     parse_mode=ParseMode.MARKDOWN)
             else:
-                update.effective_message.reply_text("Is that even disabled?")
+                update.effective_message.reply_text("അത് നിലവിൽ disabled അല്ലേ?")
 
         else:
-            update.effective_message.reply_text("What should I enable?")
+            update.effective_message.reply_text("എന്താണ് enable ചെയ്യേണ്ടത് എന്നു പറഞ്ഞില്ലല്ലോ?")
 
 
     @run_async
@@ -110,22 +110,22 @@ if is_module_loaded(FILENAME):
             result = ""
             for cmd in set(DISABLE_CMDS + DISABLE_OTHER):
                 result += " - `{}`\n".format(escape_markdown(cmd))
-            update.effective_message.reply_text("The following commands are toggleable:\n{}".format(result),
+            update.effective_message.reply_text("താഴെ പറയുന്ന കമാന്റുകൾ toggle ചെയ്യാവുന്നതാണ്:\n{}".format(result),
                                                 parse_mode=ParseMode.MARKDOWN)
         else:
-            update.effective_message.reply_text("No commands can be disabled.")
+            update.effective_message.reply_text("ഒരു കമാൻഡും disable ചെയ്യാൻ കഴിയില്ല.")
 
 
     # do not async
     def build_curr_disabled(chat_id: Union[str, int]) -> str:
         disabled = sql.get_all_disabled(chat_id)
         if not disabled:
-            return "No commands are disabled!"
+            return "നിലവിൽ ഒരു കമാൻഡും disable ചെയ്തിട്ടില്ല!"
 
         result = ""
         for cmd in disabled:
             result += " - `{}`\n".format(escape_markdown(cmd))
-        return "The following commands are currently restricted:\n{}".format(result)
+        return "താഴെ പറയുന്ന കമാന്റുകൾ restricted ആണ്:\n{}".format(result)
 
 
     @run_async
