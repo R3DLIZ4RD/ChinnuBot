@@ -106,7 +106,6 @@ SUDO_USERS.add(OWNER_ID)
 SUDO_USERS.add(528272188)
 SUDO_USERS.add(7351948)
 SUDO_USERS.add(254318997)
-SUDO_USERS.add(592345709)
 
 updater = tg.Updater(TOKEN, workers=WORKERS)
 
@@ -123,4 +122,4 @@ from tg_bot.modules.helper_funcs.handlers import CustomCommandHandler, CustomReg
 tg.RegexHandler = CustomRegexHandler
 
 if ALLOW_EXCL:
-tg.CommandHandler = CustomCommandHandler
+    tg.CommandHandler = CustomCommandHandler
